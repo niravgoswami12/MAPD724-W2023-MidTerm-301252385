@@ -6,20 +6,20 @@ import UIKit
 class EndScene: SKScene
 {
     // instance variables
-    var ocean1: Ocean?
-    var ocean2: Ocean?
+    var ocean1: OceanPortrait?
+    var ocean2: OceanPortrait?
     
     override func sceneDidLoad()
     {
         name = "END"
         
         // add the first ocean to the Scene
-        ocean1 = Ocean()
+        ocean1 = OceanPortrait()
         ocean1?.Reset()
         addChild(ocean1!)
         
         // add the second ocean to the scene
-        ocean2 = Ocean()
+        ocean2 = OceanPortrait()
         ocean2?.position.y = -627
         addChild(ocean2!)
     }

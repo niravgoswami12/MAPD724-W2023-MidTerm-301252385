@@ -1,12 +1,12 @@
 import GameplayKit
 import SpriteKit
 
-class Island : GameObject
+class OceanPortrait : GameObject
 {
-    // initializer / constructor
+    // constructor / initializer
     init()
     {
-        super.init(imageString: "island", initialScale: 2.0)
+        super.init(imageString: "ocean", initialScale: 2.0)
         Start()
     }
     
@@ -14,13 +14,10 @@ class Island : GameObject
         fatalError("init(coder:) has not been implemented")
     }
     
-    // LifeCycle Functions
-    
     override func Start()
     {
-        zPosition = Layer.island.rawValue
+        zPosition = Layer.ocean.rawValue
         verticalSpeed = 5.0
-        Reset()
     }
     
     override func Update()
@@ -31,7 +28,7 @@ class Island : GameObject
     
     override func CheckBounds()
     {
-        if(position.y <= -876)
+        if(position.y <= -2253)
         {
             Reset()
         }
@@ -39,14 +36,9 @@ class Island : GameObject
     
     override func Reset()
     {
-        position.y = 876
-        // get a pseudo random number
-        let randomX:Int = (randomSource?.nextInt(upperBound: 626))! - 313
-        position.x = CGFloat(randomX)
-        isColliding = false
+        position.y = 2253
     }
     
-    // public method
     func Move()
     {
         position.y -= verticalSpeed!

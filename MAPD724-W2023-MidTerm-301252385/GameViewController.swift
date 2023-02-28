@@ -1,6 +1,6 @@
 //
 //  GameViewController.swift
-//  MAPD724-W2022-MidTerm-301252385
+//  MAPD724-W2023-MidTerm-301252385
 //
 //  Created by Nirav Goswami on 2023-02-28.
 //
@@ -29,10 +29,26 @@ class GameViewController: UIViewController {
         
         CollisionManager.gameViewController = self
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        if(UIDevice.current.orientation.isLandscape) {
+            // landscape mode
+            
+            
+        } else if(UIDevice.current.orientation.isPortrait) {
+            // portrait mode
+            
+        }
+    }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask
     {
-        return .portrait
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
+        } else {
+            return .all
+        }
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -52,6 +68,7 @@ class GameViewController: UIViewController {
     func setScene(sceneName: String) -> Void
     {
         currentScene = GKScene(fileNamed: sceneName)
+        
         if let scene = currentScene!.rootNode as! SKScene?
         {
             scene.scaleMode = .aspectFill
@@ -92,7 +109,7 @@ class GameViewController: UIViewController {
         ScoreManager.Lives = 5
         updateLivesLabel()
         updateScoreLabel()
-        setScene(sceneName: "GameScene")
+        setScene(sceneName: "GameScenePortrait")
     }
     
     @IBAction func RestartButton_Pressed(_ sender: UIButton)
@@ -106,7 +123,7 @@ class GameViewController: UIViewController {
         ScoreManager.Lives = 5
         updateLivesLabel()
         updateScoreLabel()
-        setScene(sceneName: "GameScene")
+        setScene(sceneName: "GameScenePortrait")
         
     }
     

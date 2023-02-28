@@ -1,7 +1,7 @@
 import GameplayKit
 import SpriteKit
 
-class Player : GameObject
+class PlayerPortrait : GameObject
 {
     // Initializer
     init()

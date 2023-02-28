@@ -1,7 +1,7 @@
 import GameplayKit
 import SpriteKit
 
-class Cloud : GameObject
+class CloudPortrait : GameObject
 {
     // initializer / constructor
     init()

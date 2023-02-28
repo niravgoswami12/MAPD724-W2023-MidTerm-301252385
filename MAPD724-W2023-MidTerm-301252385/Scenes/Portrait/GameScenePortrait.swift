@@ -3,41 +3,41 @@ import GameplayKit
 import AVFoundation
 import UIKit
 
-class GameScene: SKScene
+class GameScenePortrait: SKScene
 {
     // instance variables
-    var ocean1: Ocean?
-    var ocean2: Ocean?
-    var player: Player?
-    var island: Island?
-    var clouds : [Cloud] = []
+    var ocean1: OceanPortrait?
+    var ocean2: OceanPortrait?
+    var player: PlayerPortrait?
+    var island: IslandPortrait?
+    var clouds : [CloudPortrait] = []
     
     override func sceneDidLoad()
     {
         name = "GAME"
         
         // add the first ocean to the Scene
-        ocean1 = Ocean()
+        ocean1 = OceanPortrait()
         ocean1?.Reset()
         addChild(ocean1!)
         
         // add the second ocean to the scene
-        ocean2 = Ocean()
+        ocean2 = OceanPortrait()
         ocean2?.position.y = -627
         addChild(ocean2!)
         
         // add the player to the Scene
-        player = Player()
+        player = PlayerPortrait()
         addChild(player!)
         
         // add the island to the Scene
-        island = Island()
+        island = IslandPortrait()
         addChild(island!)
         
         // add 3 clouds to the Scene
         for _ in 0...2
         {
-            let cloud = Cloud()
+            let cloud = CloudPortrait()
             clouds.append(cloud)
             addChild(cloud)
         }

@@ -3,7 +3,16 @@
 //  MAPD724-W2023-MidTerm-301252385
 //
 //  Created by Nirav Goswami on 2023-02-28.
-//
+//  File Name:    GameViewController.swift
+
+//  MAPD724 - MidTerm
+//  File Name:    GameViewController.swift
+//  Author:       Nirav Goswami
+//  Student ID:   301252385
+//  Version:      1.0
+//  Date:         2023-02-28
+//  Description:  MailPilot Game with Portrait/Landscape Support
+ 
 
 import UIKit
 import SpriteKit

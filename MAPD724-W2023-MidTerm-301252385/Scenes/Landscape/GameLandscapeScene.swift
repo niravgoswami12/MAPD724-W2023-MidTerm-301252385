@@ -1,52 +1,61 @@
+//
+//  GameLandscapeScene.swift
+//  MAPD724-W2023-MidTerm-301252385
+//
+//  Created by Nirav Goswami on 2023-02-28.
+//
+
 import SpriteKit
 import GameplayKit
 import AVFoundation
 import UIKit
 
-class GameScenePortrait: SKScene
+class GameLandscapeScene: SKScene
 {
     // instance variables
-    var ocean1: OceanPortrait?
-    var ocean2: OceanPortrait?
-    var player: PlayerPortrait?
-    var island: IslandPortrait?
-    var clouds : [CloudPortrait] = []
+    var ocean1: OceanLandscape?
+    var ocean2: OceanLandscape?
+    var player: PlayerLandscape?
+    var island: IslandLandscape?
+    var clouds : [CloudLandscape] = []
     
     override func sceneDidLoad()
     {
+        print("GameLandscapeScene sceneDidLoad")
         name = "GAME"
         
         // add the first ocean to the Scene
-        ocean1 = OceanPortrait()
+        ocean1 = OceanLandscape()
         ocean1?.Reset()
         addChild(ocean1!)
         
         // add the second ocean to the scene
-        ocean2 = OceanPortrait()
-        ocean2?.position.y = -627
+        ocean2 = OceanLandscape()
+        ocean2?.position.x = -627
         addChild(ocean2!)
         
+        
         // add the player to the Scene
-        player = PlayerPortrait()
+        player = PlayerLandscape()
         addChild(player!)
         
         // add the island to the Scene
-        island = IslandPortrait()
+        island = IslandLandscape()
         addChild(island!)
         
-        // add 3 clouds to the Scene
-        for _ in 0...2
+        // Task 1: Reduce the number of clouds in the GameScene to 2.
+        for _ in 0...1
         {
-            let cloud = CloudPortrait()
+            let cloud = CloudLandscape()
             clouds.append(cloud)
             addChild(cloud)
         }
         
         // Engine Sound - Background noise / music
         let engineSound = SKAudioNode(fileNamed: "engine.mp3")
-        addChild(engineSound)
-        engineSound.autoplayLooped = true
-        engineSound.run(SKAction.changeVolume(to: 0.5, duration: 0))
+//        addChild(engineSound)
+//        engineSound.autoplayLooped = true
+//        engineSound.run(SKAction.changeVolume(to: 0.5, duration: 0))
 
         
         
@@ -70,18 +79,18 @@ class GameScenePortrait: SKScene
     
     func touchDown(atPoint pos : CGPoint)
     {
-        player?.TouchMove(newPos: CGPoint(x: pos.x, y: -640))
+        player?.TouchMove(newPos: CGPoint(x: -540, y: pos.y))
     }
     
     func touchMoved(toPoint pos : CGPoint)
     {
-        player?.TouchMove(newPos: CGPoint(x: pos.x, y: -640))
+        player?.TouchMove(newPos: CGPoint(x: -540, y: pos.y))
         
     }
     
     func touchUp(atPoint pos : CGPoint)
     {
-        player?.TouchMove(newPos: CGPoint(x: pos.x, y: -640))
+        player?.TouchMove(newPos: CGPoint(x: -540, y: pos.y))
         
     }
     
@@ -122,3 +131,4 @@ class GameScenePortrait: SKScene
         
     }
 }
+

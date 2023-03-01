@@ -21,6 +21,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var EndLabel: UILabel!
     @IBOutlet weak var RestartButton: UIButton!
     
+    var isGameStarted = false
+    var isGameEnded = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -34,11 +37,26 @@ class GameViewController: UIViewController {
         
         if(UIDevice.current.orientation.isLandscape) {
             // landscape mode
+            if(isGameStarted){
+                setScene(sceneName: "GameLandscapeScene")
+            }else if(isGameEnded){
+//                setScene(sceneName: "EndScene")
+            }else{
+//                setScene(sceneName: "StartScene")
+            }
+            
+            
             
             
         } else if(UIDevice.current.orientation.isPortrait) {
             // portrait mode
-            
+            if(isGameStarted){
+                setScene(sceneName: "GamePortraitScene")
+            }else if(isGameEnded){
+//                setScene(sceneName: "EndScene")
+            }else{
+//                setScene(sceneName: "StartScene")
+            }
         }
     }
 
@@ -49,6 +67,10 @@ class GameViewController: UIViewController {
         } else {
             return .all
         }
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -82,6 +104,8 @@ class GameViewController: UIViewController {
     
     func presentStartScene()
     {
+        isGameStarted = false
+        isGameEnded = false
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
         StartLabel.isHidden = false
@@ -91,6 +115,8 @@ class GameViewController: UIViewController {
     
     func presentEndScene()
     {
+        isGameStarted = false
+        isGameEnded = true
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
         RestartButton.isHidden = false
@@ -100,6 +126,8 @@ class GameViewController: UIViewController {
     
     @IBAction func StartButton_Pressed(_ sender: UIButton)
     {
+        isGameStarted = true
+        isGameEnded = false
         ScoreLabel.isHidden = false
         LivesLabel.isHidden = false
         StartLabel.isHidden = true
@@ -109,11 +137,17 @@ class GameViewController: UIViewController {
         ScoreManager.Lives = 5
         updateLivesLabel()
         updateScoreLabel()
-        setScene(sceneName: "GameScenePortrait")
+        if(UIDevice.current.orientation.isLandscape) {
+            setScene(sceneName: "GameLandscapeScene")
+        } else if(UIDevice.current.orientation.isPortrait) {
+            setScene(sceneName: "GamePortraitScene")
+        }
     }
     
     @IBAction func RestartButton_Pressed(_ sender: UIButton)
     {
+        isGameStarted = true
+        isGameEnded = false
         ScoreLabel.isHidden = false
         LivesLabel.isHidden = false
         RestartButton.isHidden = true
@@ -123,7 +157,11 @@ class GameViewController: UIViewController {
         ScoreManager.Lives = 5
         updateLivesLabel()
         updateScoreLabel()
-        setScene(sceneName: "GameScenePortrait")
+        if(UIDevice.current.orientation.isLandscape) {
+            setScene(sceneName: "GameLandscapeScene")
+        } else if(UIDevice.current.orientation.isPortrait) {
+            setScene(sceneName: "GamePortraitScene")
+        }
         
     }
     

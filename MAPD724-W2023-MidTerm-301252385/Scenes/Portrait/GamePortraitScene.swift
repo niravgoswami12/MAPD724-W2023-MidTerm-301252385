@@ -34,8 +34,8 @@ class GamePortraitScene: SKScene
         island = IslandPortrait()
         addChild(island!)
         
-        // add 3 clouds to the Scene
-        for _ in 0...2
+        // add 2 clouds to the Scene
+        for _ in 0...1
         {
             let cloud = CloudPortrait()
             clouds.append(cloud)
@@ -44,9 +44,9 @@ class GamePortraitScene: SKScene
         
         // Engine Sound - Background noise / music
         let engineSound = SKAudioNode(fileNamed: "engine.mp3")
-//        addChild(engineSound)
-//        engineSound.autoplayLooped = true
-//        engineSound.run(SKAction.changeVolume(to: 0.5, duration: 0))
+        addChild(engineSound)
+        engineSound.autoplayLooped = true
+        engineSound.run(SKAction.changeVolume(to: 0.5, duration: 0))
 
         
         

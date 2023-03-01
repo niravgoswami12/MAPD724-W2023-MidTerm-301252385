@@ -43,7 +43,7 @@ class GameLandscapeScene: SKScene
         island = IslandLandscape()
         addChild(island!)
         
-        // Task 1: Reduce the number of clouds in the GameScene to 2.
+        // add 2 clouds to the Scene
         for _ in 0...1
         {
             let cloud = CloudLandscape()
@@ -53,9 +53,9 @@ class GameLandscapeScene: SKScene
         
         // Engine Sound - Background noise / music
         let engineSound = SKAudioNode(fileNamed: "engine.mp3")
-//        addChild(engineSound)
-//        engineSound.autoplayLooped = true
-//        engineSound.run(SKAction.changeVolume(to: 0.5, duration: 0))
+        addChild(engineSound)
+        engineSound.autoplayLooped = true
+        engineSound.run(SKAction.changeVolume(to: 0.5, duration: 0))
 
         
         

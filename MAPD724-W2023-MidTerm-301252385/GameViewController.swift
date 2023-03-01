@@ -22,7 +22,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var RestartButton: UIButton!
     
     var isGameStarted = false
-    var isGameEnded = false
     
     override func viewDidLoad()
     {
@@ -39,23 +38,12 @@ class GameViewController: UIViewController {
             // landscape mode
             if(isGameStarted){
                 setScene(sceneName: "GameLandscapeScene")
-            }else if(isGameEnded){
-//                setScene(sceneName: "EndScene")
-            }else{
-//                setScene(sceneName: "StartScene")
             }
-            
-            
-            
-            
+      
         } else if(UIDevice.current.orientation.isPortrait) {
             // portrait mode
             if(isGameStarted){
                 setScene(sceneName: "GamePortraitScene")
-            }else if(isGameEnded){
-//                setScene(sceneName: "EndScene")
-            }else{
-//                setScene(sceneName: "StartScene")
             }
         }
     }
@@ -105,7 +93,6 @@ class GameViewController: UIViewController {
     func presentStartScene()
     {
         isGameStarted = false
-        isGameEnded = false
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
         StartLabel.isHidden = false
@@ -116,7 +103,6 @@ class GameViewController: UIViewController {
     func presentEndScene()
     {
         isGameStarted = false
-        isGameEnded = true
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
         RestartButton.isHidden = false
@@ -127,7 +113,6 @@ class GameViewController: UIViewController {
     @IBAction func StartButton_Pressed(_ sender: UIButton)
     {
         isGameStarted = true
-        isGameEnded = false
         ScoreLabel.isHidden = false
         LivesLabel.isHidden = false
         StartLabel.isHidden = true
@@ -147,7 +132,6 @@ class GameViewController: UIViewController {
     @IBAction func RestartButton_Pressed(_ sender: UIButton)
     {
         isGameStarted = true
-        isGameEnded = false
         ScoreLabel.isHidden = false
         LivesLabel.isHidden = false
         RestartButton.isHidden = true
